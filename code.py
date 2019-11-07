@@ -1,3 +1,5 @@
+import random
+
 class ch():
     def __init__(self, char, guessed):
         self.char = char
@@ -6,9 +8,9 @@ class ch():
 file = 'words.txt'
 
 with open(file, 'r') as f:
-    data = f.split('\n')
+    data = f.readlines()
 
-def random():
+def r():
         word = random.choice(data)
         return word
 
@@ -16,6 +18,9 @@ def convert(word):
     word1 = []
     for s in word:
         word1.append(ch(s, 0))
+
+    return word1
+
 
 def isin(a, word):
     for s in word:
@@ -29,12 +34,12 @@ def isin(a, word):
     return False
 
 lives = 6
-word = convert(random())
+word = convert(r())
 while lives > 0:
     for s in word:
-        print s.char, if s.guessed = 1 else print _ ,    
+        print (s.char, end = " ") if s.guessed == 1 else print ("_" , end = " ")
 
-    a = raw_input("your lives: " + str(lives) + ", please guess: ")
+    a = input("your lives: " + str(lives) + ", please guess: ")
     if not isin(a, word):
         lives -= 1
 
