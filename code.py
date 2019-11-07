@@ -34,12 +34,21 @@ def isin(a, word):
     return False
 
 lives = 6
-word = convert(r())
+w = r()
+word = convert(w)
 while lives > 0:
     for s in word:
         print (s.char, end = " ") if s.guessed == 1 else print ("_" , end = " ")
 
     a = input("your lives: " + str(lives) + ", please guess: ")
-    if not isin(a, word):
-        lives -= 1
+    if len(a) > 1:
+        if(a == w):
+            print("Congrats")
+        else:
+            print("yikes")
+        break
+            
+    else:
+        if not isin(a, word):
+            lives -= 1
 
